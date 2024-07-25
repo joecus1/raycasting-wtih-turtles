@@ -90,9 +90,9 @@ def perform_raycast() -> None:
 
     screen_width = VIEW_BBOX[1][0] - VIEW_BBOX[0][0]
     view_left_x = VIEW_BBOX[0][0]
-    view_center_y = (VIEW_BBOX[0][1] + VIEW_BBOX[1][1]) / 2
     view_top_y = VIEW_BBOX[0][1]
     view_bottom_y = VIEW_BBOX[1][1]
+    view_center_y = (view_top_y + view_bottom_y) / 2
 
     for i in range(screen_width):
         horizontal_coefficient = i / (screen_width / 2) - 1
@@ -122,7 +122,7 @@ def perform_raycast() -> None:
             side_dist_y = (ray_y - map_y) * delta_y
         else:
             step_y = 1
-            side_dist_y = (map_y + 1 - ray_y) * delta_x
+            side_dist_y = (map_y + 1 - ray_y) * delta_y
         
         hit = False
         side = 0 # vert is 0, horizontal is 1
